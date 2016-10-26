@@ -34,3 +34,7 @@
 
 # Debug folder
 Debug/**
+
+# Eclipse project
+.cproject
+.project
