@@ -33,49 +33,42 @@ int num_neighbors(int x, int y);
 int main(void)
 {
 	int n;
-	initialize_world();
 
-	for (n = 0; n < NUM_GENERATIONS; n++) {
-	    output_world();
+	/* TODO: initialize the world */
+
+
+	for (n = 0; n < NUM_GENERATIONS; n++)
 		next_generation();
-		sleep(1);
-	}
 
-	output_world();
+	/* TODO: output final world state */
+
 
 	return 0;
 }
 
 void next_generation(void) {
-    int x, y;
-    for (x = 0; x < get_world_width(); x++) {
-        for (y = 0; y < get_world_height(); y++) {
-            set_cell_state(x, y, get_next_state(x, y));
-        }
-    }
+	/* TODO: for every cell, set the state in the next
+	   generation according to the Game of Life rules
+
+	   Hint: use get_next_state(x,y) */
+
+
 	finalize_evolution(); /* called at end to finalize */
 }
 
 int get_next_state(int x, int y) {
-    if (get_cell_state(x, y) == ALIVE) {
-        if (num_neighbors(x, y) < 2) return DEAD;
-        if (num_neighbors(x, y) < 4) return ALIVE;
-        return DEAD;
-    } else {
-        if (num_neighbors(x, y) == 3) return ALIVE;
-        return DEAD;
-    }
+	/* TODO: for the specified cell, compute the state in
+	   the next generation using the rules
+
+	   Use num_neighbors(x,y) to compute the number of live
+	   neighbors */
+
 }
 
 int num_neighbors(int x, int y) {
-    int neighborsCount = 0;
-    if (get_cell_state(x - 1, y - 1) == ALIVE) neighborsCount++;
-    if (get_cell_state(x - 1, y) == ALIVE) neighborsCount++;
-    if (get_cell_state(x - 1, y + 1) == ALIVE) neighborsCount++;
-    if (get_cell_state(x, y - 1) == ALIVE) neighborsCount++;
-    if (get_cell_state(x, y + 1) == ALIVE) neighborsCount++;
-    if (get_cell_state(x + 1, y - 1) == ALIVE) neighborsCount++;
-    if (get_cell_state(x + 1, y) == ALIVE) neighborsCount++;
-    if (get_cell_state(x + 1, y + 1) == ALIVE) neighborsCount++;
-    return neighborsCount;
+	/* TODO: for the specified cell, return the number of
+	   neighbors that are ALIVE
+
+	   Use get_cell_state(x,y) */
+
 }
