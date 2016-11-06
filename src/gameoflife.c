@@ -69,14 +69,14 @@ static void copyWorld(MatrixPtr* srcMatrixPtr, MatrixPtr* dstMatrixPtr)
 static void evolveWorld()
 {
 // Add code here
- 
+
 }
 
 
 
 int main()
 {
-   
+
     unsigned int i;
     clock_t start, end;
     initializeWorld(matrixPtr1);
@@ -86,7 +86,7 @@ int main()
       evolveWorld();
     }
     end = clock();
-    
+
     printf("Final world\n\n");
     printWorld(matrixPtr1);
     printf("Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
