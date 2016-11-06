@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<assert.h>
 
 #define ROWS (20)
 #define COLS (32)
@@ -73,9 +74,20 @@ static void evolveWorld()
 }
 
 
+#ifdef TEST_ON
+static void run_tests()
+{
+    assert(1);
+}
+#endif
+
 
 int main()
 {
+
+#ifdef TEST_ON
+    run_tests();
+#endif
 
     unsigned int i;
     clock_t start, end;
