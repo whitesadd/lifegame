@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_1c37a64e",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:03:14Z",
+      "side": 1,
+      "message": "Never write two statements in the same line, that a very bad practice",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "05f69e065a7ae9fabe346bd5368a1e77c25266d0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_1cb8c674",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:03:14Z",
+      "side": 1,
+      "message": "Here is your bug!\n\n\"Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 39,
+        "endLine": 100,
+        "endChar": 40
+      },
+      "revId": "05f69e065a7ae9fabe346bd5368a1e77c25266d0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
