@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_372283a4",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "this is not needed",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d7b6b73d",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "two statements in the same row is bad practice",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f7a9bbde",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "This is OK, it works. But, in my opinion is not elegant, it is rather difficult to read",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_173f7fb6",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "try to use brackets {} after if and after else (not mandatory, but it is a recommended practice)",
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_17665fee",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "you are missing\n\n  else\n  {\n    matrixPtr2[i][j] \u003d 0;\n  }",
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_17389fd3",
+        "filename": "src/gameoflife.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1008231
+      },
+      "writtenOn": "2016-11-07T16:19:29Z",
+      "side": 1,
+      "message": "not needed - you should instead decide if a cell is going to live or die directly in the evolve() method",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "48cbd5186fcc73c36880af4d6de93ca711cd0093",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
