@@ -33,6 +33,7 @@ static void initializeWorld(MatrixPtr* matrixPtr)
 
   for (j = firstColumn; j < firstColumn + 10; ++j)
   {
+
     matrixPtr[insertionRow][j] = 1;
   }
 }
@@ -66,30 +67,156 @@ static void copyWorld(MatrixPtr* srcMatrixPtr, MatrixPtr* dstMatrixPtr)
   }
 }
 
-static void evolveWorld()
+static void evolveWorld(void)
 {
 // Add code here
- 
+	int i, j, numalive;
+	int rowst, colst, rowend, colend;
+
+	for (i = 1; i < (ROWS -1); i++){
+		for (j = 1; j < (COLS -1); j++){
+			rowend = i+1;
+			colend = j+1;
+			numalive = 0;
+
+			for (rowst = i-1; rowst <= rowend; rowst++){
+				for (colst = j-1; colst <= colend; colst++){
+					numalive = numalive + matrixPtr1[rowst][colst];
+				}
+			}
+			numalive = numalive - matrixPtr1[i][j];
+
+			if (matrixPtr1[i][j] == 1){
+				if(numalive < 2 || numalive > 3){
+					matrixPtr2[i][j] = 0;
+				}
+				else{
+					matrixPtr2[i][j] = 1;
+				}
+			}
+			else{
+				if(numalive == 3)
+					matrixPtr2[i][j] = 1;
+				else
+					matrixPtr2[i][j] = 0;
+			}
+		}
+	}
+}
+
+static void evolveWorldopt(void)
+{
+// Add code here
+	int i, j, numalive;
+	int rowst, colst, rowend, colend;
+
+	for (i = 1; i < (ROWS -1); i++){
+		for (j = 1; j < (COLS -1); j++){
+			rowend = i+1;
+			colend = j+1;
+			numalive = 0;
+
+			for (rowst = i-1; rowst <= rowend; rowst++){
+				for (colst = j-1; colst <= colend; colst++){
+					numalive = numalive + matrixPtr1[rowst][colst];
+				}
+			}
+			numalive = matrixPtr1[i-1][j-1] + matrixPtr1[i-1][j] + matrixPtr1[i-1][j+1] + matrixPtr1[i][j-1] + matrixPtr1[i][j+1]
+			           + matrixPtr1[i+1][j-1] + matrixPtr1[i+1][j] + matrixPtr1[i+1][j+1];
+
+			if (matrixPtr1[i][j] == 1){
+				if(numalive < 2 || numalive > 3){
+					matrixPtr2[i][j] = 0;
+				}
+				else{
+					matrixPtr2[i][j] = 1;
+				}
+			}
+			else{
+				if(numalive == 3)
+					matrixPtr2[i][j] = 1;
+				else
+					matrixPtr2[i][j] = 0;
+			}
+		}
+	}
 }
 
 
-
-int main()
+int main(void)
 {
    
     unsigned int i;
     clock_t start, end;
+    MatrixPtr* matrixPtr3;
+    /* No optimizations */
     initializeWorld(matrixPtr1);
+    printWorld(matrixPtr1);
     start = clock();
+
     for (i = 0; i < 100000; ++i)
     {
       evolveWorld();
+      copyWorld(matrixPtr2, matrixPtr1);
     }
     end = clock();
     
-    printf("Final world\n\n");
+    printf("No optimization : Final world\n\n");
     printWorld(matrixPtr1);
-    printf("Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
-    return 0;
+    printf("No optimization : Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
+    
+    /* opt1 changing pointers */
+    initializeWorld(matrixPtr1);
+    printWorld(matrixPtr1);
+    start = clock();
 
+    for (i = 0; i < 100000; ++i)
+    {
+      evolveWorld();
+      
+      matrixPtr3 = matrixPtr1;
+      matrixPtr1 = matrixPtr2;
+      matrixPtr2 = matrixPtr3;
+    }
+    end = clock();
+    
+    printf("Interchange pointers : Final world\n\n");
+    printWorld(matrixPtr1);
+    printf("Interchange pointers : Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
+    
+    /* opt2 unwind loop only */
+    initializeWorld(matrixPtr1);
+    printWorld(matrixPtr1);
+    start = clock();
+
+    for (i = 0; i < 100000; ++i)
+    {
+      evolveWorldopt();
+      copyWorld(matrixPtr2, matrixPtr1);
+    }
+    end = clock();
+    
+    printf("Unwind loop only : Final world\n\n");
+    printWorld(matrixPtr1);
+    printf("Unwind loop only : Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
+    
+    /* opt3 changing pointers and unwind loop */
+    initializeWorld(matrixPtr1);
+    printWorld(matrixPtr1);
+    start = clock();
+
+    for (i = 0; i < 100000; ++i)
+    {
+      evolveWorldopt();
+      
+      matrixPtr3 = matrixPtr1;
+      matrixPtr1 = matrixPtr2;
+      matrixPtr2 = matrixPtr3;
+    }
+    end = clock();
+    
+    printf("Unwind loop and Interchange pointers : Final world\n\n");
+    printWorld(matrixPtr1);
+    printf("Unwind loop and Interchange pointers : Time needed was %f s\n", ((double) (end - start)) / CLOCKS_PER_SEC);
+    return 0;
 }
